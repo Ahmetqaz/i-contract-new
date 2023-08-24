@@ -90,7 +90,6 @@ section {
       gap: 40px;
       &-item {
         width: calc(42% - 15px);
-        gap: 5px;
         display: flex;
         flex-direction: column;
         .input {
@@ -98,7 +97,7 @@ section {
             width: 160px;
           }
           &--checkBox {
-            margin-top: 20px;
+            margin-top: 24px;
           }
         }
         &._lg {
@@ -124,9 +123,19 @@ section {
           width: 32%;
         }
         &-wrapper {
-          display: flex;
           flex-direction: column;
           gap: 10px;
+          display: flex;
+          max-height: 0;
+          opacity: 0;
+          pointer-events: none;
+          transition: 0.3s ease-in-out;
+          &.active {
+            max-height: 500px;
+            opacity: 1;
+            pointer-events: all;
+            // margin-bottom: 5px;
+          }
         }
       }
     }
@@ -594,7 +603,7 @@ section {
         &-item {
           width: 100%;
           justify-content: space-between;
-          gap: 20px 10px;
+          gap: 0 10px;
           .input {
             font-size: 23px;
             justify-content: space-between;
@@ -621,7 +630,10 @@ section {
             }
           }
           &-wrapper {
-            gap: 20px 10px;
+            gap: 20px;
+            &.active {
+              margin-bottom: 24px;
+            }
           }
         }
       }

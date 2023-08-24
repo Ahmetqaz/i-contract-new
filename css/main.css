@@ -2931,7 +2931,6 @@ section {
 }
 .contactContent__currency-item {
   width: calc(42% - 15px);
-  gap: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2944,7 +2943,7 @@ section {
   width: 160px;
 }
 .contactContent__currency-item .input--checkBox {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 .contactContent__currency-item._lg {
   width: calc(58% - 15px);
@@ -2978,14 +2977,24 @@ section {
   width: 32%;
 }
 .contactContent__currency-item-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.contactContent__currency-item-wrapper.active {
+  max-height: 500px;
+  opacity: 1;
+  pointer-events: all;
 }
 .contactForm {
   width: calc(48% - 5px);
@@ -3865,7 +3874,7 @@ section {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
-    gap: 20px 10px;
+    gap: 0 10px;
   }
   .contactContent__currency-item .input {
     font-size: 23px;
@@ -3893,7 +3902,10 @@ section {
     font-size: 1em;
   }
   .contactContent__currency-item-wrapper {
-    gap: 20px 10px;
+    gap: 20px;
+  }
+  .contactContent__currency-item-wrapper.active {
+    margin-bottom: 24px;
   }
 }
 @media (max-width: 1700px) {

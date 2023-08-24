@@ -374,7 +374,7 @@
                       </div>
                     </div>
                     <div class="contactContent__currency-item">
-                      <div class="contactContent__currency-item-wrapper">
+                      <div class="contactContent__currency-item-wrapper" id="currencyCheck__body">
                         <div class="input input--currencySm">
                           <label for="cur-2"> Nettobetrag </label>
                           <input type="text" placeholder="XXX" id="cur-2" />
@@ -385,8 +385,8 @@
                         </div>
                       </div>
                       <div class="input input--checkBox">
-                        <input type="checkbox" id="check" />
-                        <label for="check">
+                        <input type="checkbox" id="currencyCheck" />
+                        <label for="currencyCheck">
                           MwSt. hinzufügen
                           <span class="checkBox"> </span>
                         </label>
@@ -838,7 +838,17 @@
     </div>
   </div>
   <script src="./js/customSelect.js">
-
+  </script>
+  <script>
+    const currencyCheck = document.getElementById("currencyCheck")
+    const currencyCheck__body = document.getElementById("currencyCheck__body")
+    currencyCheck.addEventListener("change", () => {
+      if (currencyCheck.checked) {
+        currencyCheck__body.classList.add("active")
+      }else{
+        currencyCheck__body.classList.remove("active")
+      }
+    })
   </script>
   <script src="./js/contract-gen.js" type="module" async></script>
   <!-- <script src="../../js/popup.js"></script>
