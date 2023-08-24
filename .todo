@@ -1,0 +1,43 @@
+The current implementation of DealerView is not complete and needs to be extended to include the following functions. In this ticket, all points that are open are collected and the corresponding tickets can be derived from them.
+
+This template differs technically from the contract template in only a few points. All fields have the same ID in both templates. Please take this into account when implementing the template
+
+ 
+
+Optical requirements
+
+To the right of the "Buyer" drop-down field, a button with a user icon to display the buyer data in a pop-up dialogue.
+
+The selected menu "Kontaktdaten", "Fahrzeugdaten", etc., should be highlighted in IContract orange.
+
+Technical requirements
+
+✅A JS function to fill in all fields. The JS function receives a JSON file with key and values as input.
+
+A function addBuyder is required. This function is used to add the buyers to the buyer DropDownBox.
+
+By default there is no buyer in the template
+
+An event should be triggered for each of the "Weitere funktionen" when a function is selected.
+
+If the checkbox Add VAT was selected, the text fields "Nettobetrag" and "19 % MeSt." are to be activated or deactivated.
+
+By default, the checkbox "MwSt. hinzufügen" is not selected.
+
+All DropDown boxes must be selectable
+
+When the user clicks on the field "Eigenschaften hinzufügen", a pop-up opens where the user can enter the new property in an input field. This property is then to be added via the addInput function.
+
+The "Eigenschaften hinzufügen" button is at the end of the vehicle data.
+
+Es wird eine AddInput-Funktion analog contract-template benötigt.
+
+An AddInput function similar to contract-template is required.
+
+If you click on the "Show" button in the vehicle status area, the CarInspector should open as a screen pop.
+
+All damage in the categories "Accident-free", "Repainting", "Other damage" must be transferred to the corresponding text fields by the CarInspector after it has been closed.
+
+The placeholders {Datum} and {Ort} and {KNr} must be taken over by the place of the buyer, the collection date and the contract number (contract number is in the JSON object). 
+
+A cleanup function is needed to set the template to the default state.
