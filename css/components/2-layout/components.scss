@@ -139,12 +139,17 @@
       opacity: 0;
       cursor: pointer;
       z-index: 1;
-
       &:checked + label {
         .checkBox {
           border-color: $primary;
           &:after {
             opacity: 1;
+          }
+          &--round {
+            border-color: $primary;
+            &::before {
+              opacity: 1;
+            }
           }
         }
       }
@@ -180,6 +185,25 @@
         transform: translate(-50%, -50%) rotate(45deg);
         opacity: 0;
         @include transition;
+      }
+      &--round {
+        border-radius: 50%;
+        &::after {
+          display: none;
+        }
+        &::before {
+          content: "";
+          width: 64%;
+          height: 64%;
+          background: $primary;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: inherit;
+          @include transition;
+          opacity: 0;
+        }
       }
     }
     &._orange {
@@ -495,6 +519,70 @@
       }
     }
   }
+  &--borderDropdown {
+    z-index: 2;
+    max-width: 170px;
+    .input {
+      &__selected {
+        padding: 6px 40px 6px 14px;
+        border-radius: 4px;
+        border: 1px solid $gray;
+        position: relative;
+        @include transition;
+        &::after {
+          content: "";
+          width: 10px;
+          height: 10px;
+          background-image: url("../images/bestand/chevron.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          @include transition;
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      &__dropdown {
+        border-color: $gray;
+        padding: 6px 14px;
+        gap: 10px;
+        border-radius: 0 0 4px 4px;
+        border-top: unset;
+      }
+    }
+    .text {
+      font-size: 14px;
+      line-height: 1em;
+      font-weight: 400;
+      color: $gray;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ico {
+      color: $gray;
+      width: 18px;
+      top: 5px;
+      right: 10px;
+      svg {
+        stroke: currentColor;
+      }
+    }
+    &.active {
+      .input__selected {
+        border-radius: 4px 4px 0 0;
+        &::after {
+          transform: translateY(-50%) rotate(180deg);
+        }
+      }
+    }
+  }
   &--primary {
     font-size: 13px;
     position: relative;
@@ -600,6 +688,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  &--border {
+    border: 1px solid $green;
+    img {
+      border: 1px solid $white;
+      border-radius: inherit;
+    }
+  }
   img {
     width: 100%;
     height: 100%;
@@ -643,6 +738,19 @@
     padding: 0.8em 3.4em;
     &:hover {
       opacity: 0.8;
+    }
+    &._round {
+      border-radius: 100px;
+      gap: 14px;
+      padding: 0.8em 1.4em;
+      .ico {
+        color: $white;
+        width: 20px;
+        height: 20px;
+        svg {
+          fill: currentColor;
+        }
+      }
     }
   }
   &--rounded {
@@ -706,6 +814,17 @@
         height: 100%;
       }
     }
+    .ico {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
   }
   &--file {
     position: relative;
@@ -732,6 +851,186 @@
     &:hover {
       border-color: $orange;
       background: rgba($orange, 0.05);
+    }
+  }
+  &--icoBg {
+    padding: 0.5em;
+    width: 3.5em;
+    height: 3.14em;
+    background: $white;
+    border: 1px solid $black-5;
+    color: $primary;
+    .ico {
+      width: auto;
+      height: 1.28em;
+      svg {
+        fill: currentColor;
+        stroke: unset;
+      }
+    }
+    &:hover {
+      border-color: rgba($black-4, 0.5);
+    }
+    &._sm {
+      width: 2.5em;
+      height: 2.5em;
+      .ico {
+        height: 1em;
+      }
+    }
+    &._stock {
+      background: $primary;
+      border: unset;
+      width: 3.5em;
+      height: 2.7em;
+      .ico {
+        color: $white;
+        svg {
+          stroke: currentColor;
+        }
+      }
+      &:hover {
+        background: $orange;
+      }
+    }
+  }
+  &--dropdown {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba($black-4, 0.65);
+    padding: 0.9em 0.5em 0.9em 0.9em;
+    background: $white;
+    border-radius: 5px;
+    gap: 10px;
+    border-color: $black-5;
+    .ico {
+      width: 8px;
+    }
+    &:hover {
+      border-color: rgba($black-4, 0.5);
+    }
+  }
+  &--chevron {
+    border-color: $gray-2;
+    border-radius: 4px;
+    padding: 0.3em 1.15em;
+    .ico {
+      font-size: inherit;
+      width: 0.4em;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+  &--text {
+    min-width: 196px;
+    border-radius: 7px;
+    padding: 6px 16px;
+    background: $white;
+    color: $primary;
+    &._red {
+      color: $red;
+    }
+  }
+  &--drag {
+    font-size: 18px;
+    width: 1.5em;
+    height: 1.5em;
+    color: $primary;
+    padding: 0;
+    cursor: grab;
+    .ico {
+      width: inherit;
+      height: auto;
+      color: inherit;
+      svg {
+        fill: currentColor;
+      }
+    }
+    &._secondary {
+      .ico {
+        color: $white;
+      }
+    }
+  }
+  &--notification {
+    width: 74px;
+    height: 56px;
+    background: $white;
+    border-radius: 14px;
+    border: 1px solid #e5e5e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 9;
+    .button__burger {
+      width: 22px;
+      height: 18px;
+      position: relative;
+      &::before,
+      &::after,
+      span {
+        content: "";
+        width: 100%;
+        height: 2.9px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $primary;
+        transition: 0.3s ease-in-out;
+      }
+      &::after {
+        width: 9px;
+        top: unset;
+        bottom: 0;
+      }
+      span {
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+      }
+    }
+    &.active {
+      border-color: $orange;
+      .button {
+        &__burger {
+          &::before {
+            width: 100%;
+            top: 50%;
+            right: unset;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            background: $orange;
+          }
+          &::after {
+            top: 50%;
+            bottom: unset;
+            width: 100%;
+            transform: translate(0, -50%) rotate(45deg);
+            background: $orange;
+          }
+          span {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  &--tab {
+    border: 1px solid $blue-4;
+    border-radius: 4px;
+    font-weight: 400;
+    min-width: 100px;
+    &:hover {
+      color: $orange;
+    }
+    &.active {
+      background-color: $primary;
+      border-color: $primary;
+      color: $white;
     }
   }
   &._shadow {
@@ -768,6 +1067,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  &__group {
+    display: flex;
+    align-items: center;
+    .button {
+      &:nth-child(1) {
+        border-radius: 4px 0 0 4px;
+      }
+      &:nth-child(2) {
+        border-right: unset;
+        border-left: unset;
+        border-radius: 0;
+      }
+      &:nth-child(3) {
+        border-radius: 0px 4px 4px 0;
+      }
+    }
   }
   svg,
   img {
@@ -1190,6 +1506,8 @@
   justify-content: space-between;
   &._noheader {
     padding-top: 20px !important;
+    justify-content: center;
+    max-width: 1920px;
   }
   &__body {
     display: flex;
@@ -1197,8 +1515,14 @@
     width: 100%;
     max-width: 1845px;
     &._lg {
-      max-width: 1940px;
+      max-width: 1920px;
     }
+    &._row {
+      flex-direction: row;
+    }
+  }
+  &._sm {
+    padding-bottom: 0;
   }
 }
 .setting {
@@ -1394,11 +1718,12 @@
     }
   }
 }
-
-@mixin components-1440 {
+@mixin components-1660 {
   .wrapper {
-    padding: 120px 0 40px;
+    padding: 110px 0 40px;
   }
+}
+@mixin components-1440 {
   .setting {
     .button {
       &--primary {
@@ -1430,15 +1755,25 @@
 }
 @mixin components-1180 {
   .input {
-    font-size: 15px;
+    &--text {
+      font-size: 15px;
+    }
     &--date {
       font-size: 13px;
     }
   }
+  .button {
+    &--notification {
+      width: 66px;
+    }
+  }
+}
+@mixin components-1100 {
+  .wrapper {
+    padding: 100px 0 40px;
+  }
 }
 @mixin components-1025 {
-  .setting {
-  }
 }
 @mixin components-880 {
   .input {
@@ -1482,5 +1817,8 @@
         min-width: 670px;
       }
     }
+  }
+  .wrapper {
+    padding: 80px 0 40px;
   }
 }
